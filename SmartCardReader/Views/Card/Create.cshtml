@@ -1,0 +1,242 @@
+﻿@model SmartCardReader.Models.IdentityCard
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <div class="modal fade" id="RequestSmartCardModal" tabindex="-1" role="dialog" aria-labelledby="" RequestSmartCard-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="" RequestSmartCard-label">
+                        Insert Smart Card
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    @*<button type="button" class="btn btn-info" onclick="onSmartCardRequest()">Get a Candidate</button>*@
+                    @Html.ActionLink("Get a candidate", "ReadCard", "Candidate", null, new { @class = "btn btn-info" });
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>CandidateGrid</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CardNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CardNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Firstnames, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Firstnames, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Firstnames, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BirthPlace, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BirthPlace, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BirthPlace, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nobility, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nobility, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nobility, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Photohash, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Photohash, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Photohash, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HasFamily, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HasFamily, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HasFamily, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ZipCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+                @Html.ActionLink("Create using SmartCard", "ReadCard", "Card", null, new { @class = "btn btn-info", Id = "btnLoadSmartCard", })
+                @*<button id="btnLoadSmartCard" type="button" class="btn btn-info" data-toggle="modal" data-target="#RequestSmartCardModal" onclick="CheckReader()">Create using SmartCard</button>*@
+                <button type="button" onclick="CheckReader()" class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span></button>
+                <div class="loader"></div>
+                <div class="alert" id="loader-message"></div>
+
+            </div>
+        </div>
+    </div>
+    }
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "Index")
+
+    </div>
+</body>
+</html>
+
+<script>
+    //$(function () {
+    //    setTimeout(function () {
+    //        $(".loader").hide();
+    //        $("#btnLoadSmartCard").removeAttr('Disabled');
+    //    }, 3000);
+    //});
+
+    $(function () {
+        CheckReader();
+        //setTimeout(() => { CheckReader();},1000);
+       
+
+    });
+
+    function Alert() {
+        var warning = () => {
+            $("#loader-message").html("<p>" + "No available slots" + "<p>");
+            $("#loader-message").addClass("alert-warning");
+            $("#loader-message").show();
+            setTimeout(() => { $("#loader-message").hide(1000); }, 2000);
+        };
+        var info = () => {
+            $("#loader-message").html("<p>" + "Found eID slot" + "<p>");
+            $("#loader-message").addClass("alert-info");
+            $("#btnLoadSmartCard").removeAttr('Disabled');
+            setTimeout(() => { $("#loader-message").hide(1000); }, 2000);
+        }
+            return { info, warning };
+    }
+    function Loading(enabled) {
+        if (enabled) {
+            $(".loader").show();
+        }
+        else {
+            $(".loader").hide();
+        }
+    
+    }
+    function CheckReader() {
+        Loading(true);
+        $("#btnLoadSmartCard").attr('Disabled',true);
+
+        var alerts = Alert();
+        console.debug("getting reader status");
+        $.get("/api/SmartCard/status", (response) => {
+            Loading(false);
+            console.debug("response:");
+            console.debug(response);
+            if (response.Active == false) {
+                alerts.warning();
+                $("#btnLoadSmartCard").attr('Disabled',true);
+
+            }
+            else {
+                alerts.info();
+                $("#btnLoadSmartCard").removeAttr('Disabled');
+
+            }
+        });
+    }
+    function onSmartCardRequest() {
+        console.debug("Getting candidate");
+        var response = $.get("/api/SmartCard/");
+        console.log("Response: ")
+        console.log(response)
+        $("#RequestSmartCard").modal("hide");
+    }
+</script>
